@@ -12,7 +12,7 @@
 - [AtCoder ABC182 ルール](https://atcoder.jp/contests/abc182/rules)
 ## 提出の練習
 - [practice contest](https://atcoder.jp/contests/practice)
-- [Welcome to AtCoderのサンプルコード](https://github.com/AAAR-Salmon/procon)
+- [Welcome to AtCoderのサンプルコード](https://github.com/AAAR-Salmon/procon/tree/introduction/introduction/sample)
 ## 典型問題を解いてみよう
 - [AtCoder Problems](https://kenkoooo.com/atcoder)
 
