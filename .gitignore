@@ -1,0 +1,9 @@
+*
+!.gitignore
+!/LICENSE
+
+!*/
+!*.pdf
+!*.tex
+!*.png
+!*.md
