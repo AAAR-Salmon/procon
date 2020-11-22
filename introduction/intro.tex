@@ -1,5 +1,6 @@
 \documentclass[t, aspectratio=169, dvipdfmx]{beamer}
 
+\usepackage{url}
 \usepackage{hyperref, pxjahyper}
 \usepackage{cite}
 \usepackage{graphicx}
@@ -207,7 +208,55 @@
     \item 制限時間は1時間
     \item 全問解ききることは想定していないので解けそうな問題から解いてください
     \item インターネットや本で調べてもOK
+    \item \underline{誰も提出していない問題は解説しないので、解説が欲しい場合は白紙提出してください}
   \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{配点基準}
+  \begin{table}
+    \caption{今回採用した配点の基準}
+    \label{points}
+    \begin{tabular}{ccc}\hline
+      配点 & 問題数 & 問題の要素 \\ \hline
+      50 & 3 & \begin{tabular}{c}
+        if文のみで解ける \\
+        数学的考察が不要
+      \end{tabular} \\ \hline
+      100 & 5 & \begin{tabular}{c}
+        if文のみで解けるが、場合分けが難しい \\
+        文字列操作が必要 \\
+        簡単な数学的要素が含まれる
+      \end{tabular} \\ \hline
+      200 & 6 & \begin{tabular}{c}
+        ループまたは再帰関数が必要 \\
+        単純な多重ループが必要 \\
+        小数を扱う \\
+        数学的考察が含まれる
+      \end{tabular} \\ \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}
+  \frametitle{配点基準}
+  \begin{table}
+    \caption{今回採用した配点の基準}
+    \label{points}
+    \begin{tabular}{ccc}\hline
+      配点 & 問題数 & 問題の要素 \\ \hline
+      300 & 3 & \begin{tabular}{c}
+        ナイーブな実装が通用しない \\
+        コーナーケースへの対応が必要
+      \end{tabular} \\ \hline
+      400 & 4 & \begin{tabular}{c}
+        特殊なデータ構造を用いる \\
+        比較的複雑な典型アルゴリズムを用いる \\
+        $\mod 10^9+7$ \\
+        複合的なスキルが必要な
+      \end{tabular} \\ \hline
+    \end{tabular}
+  \end{table}
 \end{frame}
 
 \subsection{解説}
@@ -246,7 +295,7 @@
     \begin{itemize}
       \item 便利機能が多い
       \begin{itemize}
-        \item クラス、文字列型、STLのコンテナクラスや関数、ラムダ式など
+        \item 文字列型、STLのコンテナクラスや関数、クラス、ラムダ式など
       \end{itemize}
       \item C言語のコードはそのまま動く
       \item 競プロでは一番人口が多い
@@ -254,7 +303,7 @@
     \end{itemize}
     \item ほとんど書けない人：Python
     \begin{itemize}
-      \item 標準ライブラリが豊富で便利機能が多い
+      \item ライブラリが豊富で便利機能が多い
       \begin{itemize}
         \item range型、ジェネレータ、numpyモジュール
       \end{itemize}
