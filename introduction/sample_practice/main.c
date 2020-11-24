@@ -14,4 +14,6 @@ int main() {
 
 	/* 出力 */
 	printf("%d %s\n", a+b+c, s);
+
+	return 0;
 }
