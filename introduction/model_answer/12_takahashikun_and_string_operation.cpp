@@ -8,7 +8,7 @@ int main() {
 	string ss = s + s;
 	auto rot_s_left = ss.end() - s.length();
 	auto rot_s_right = ss.end();
-	for (int i = 0; i < s.size(); i++) {
+	for (size_t i = 0; i < s.size(); i++) {
 		if (equal(t.begin(), t.end(), rot_s_left, rot_s_right)) {
 			ans = i;
 			break;
