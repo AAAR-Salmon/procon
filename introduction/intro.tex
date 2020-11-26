@@ -284,6 +284,52 @@
   \end{table}
 \end{frame}
 
+\begin{frame}
+  \frametitle{ABC Swap}
+  \begin{table}
+    \caption{箱とその中身}
+    \begin{minipage}{0.2\hsize}
+      \begin{center}
+        \begin{tabular}{|c|c|c|} \hline
+          A & X \\ \hline
+          B & Y \\ \hline
+          C & Z \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{minipage}
+    \begin{minipage}{0.2\hsize}
+      \begin{center}
+        \begin{tabular}{|c|c|c|} \hline
+          A & \textcolor{red}{Y} \\ \hline
+          B & \textcolor{red}{X} \\ \hline
+          C & Z \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{minipage}
+    \begin{minipage}{0.2\hsize}
+      \begin{center}
+        \begin{tabular}{|c|c|c|} \hline
+          A & \textcolor{red}{Z} \\ \hline
+          B & X \\ \hline
+          C & \textcolor{red}{Y} \\ \hline
+        \end{tabular}
+      \end{center}
+    \end{minipage}
+  \end{table}
+  \begin{itemize}
+    \item swap関数を使ってシミュレーションする
+    \item 順番を決め打ちして出力する
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{AC or WA / Sheep and Wolves}
+  \begin{itemize}
+    \item $N=M$ / $W \geq S$ か否かを判別するだけ
+    \item 条件演算子 \verb|cond ? a : b| を使うと短く書ける
+  \end{itemize}
+\end{frame}
+
 \section{本番のコンテストについて}
 \frame{\sectionpage}
 
