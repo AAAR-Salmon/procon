@@ -18,6 +18,8 @@
 \setbeamercolor{block title}{fg=white, bg=darkred}
 \setbeamercolor{block body}{fg=black, bg=red!10}
 
+\newcommand{\comb}[2]{{}_{#1}\mathrm{C}_{#2}}
+
 \hypersetup{
   colorlinks=true,
 }
@@ -177,8 +179,8 @@
       \item 事前調査で回答いただいた言語のサンプルを\href{https://github.com/AAAR-Salmon/procon/tree/main/introduction/sample_practice}{ここ}に用意してあります
     \end{itemize}
   \end{itemize}
-  \begin{figure}
-    \includegraphics[height=120pt]{atcoder_home.png}
+  \begin{figure}[b]
+    \includegraphics[height=110pt]{atcoder_home.png}
     \caption{AtCoderのコンテストトップページ}
     \label{practice_contest}
   \end{figure}
@@ -238,7 +240,7 @@
 
 \begin{frame}
   \frametitle{配点基準}
-  \begin{table}
+  \begin{table}[t]
     \caption{今回採用した配点の基準}
     \label{points}
     \begin{tabular}{ccc}\hline
@@ -265,7 +267,7 @@
 
 \begin{frame}
   \frametitle{配点基準}
-  \begin{table}
+  \begin{table}[t]
     \caption{今回採用した配点の基準}
     \label{points}
     \begin{tabular}{ccc}\hline
@@ -284,11 +286,14 @@
   \end{table}
 \end{frame}
 
+\begin{frame}[c]
+  \center{\huge 50点問題}
+\end{frame}
 \begin{frame}[containsverbatim]
   \frametitle{ABC Swap}
   \begin{table}
     \caption{箱とその中身}
-    \begin{minipage}{0.2\hsize}
+    \begin{minipage}{0.3\hsize}
       \begin{center}
         \begin{tabular}{|c|c|c|} \hline
           A & X \\ \hline
@@ -297,7 +302,7 @@
         \end{tabular}
       \end{center}
     \end{minipage}
-    \begin{minipage}{0.2\hsize}
+    \begin{minipage}{0.3\hsize}
       \begin{center}
         \begin{tabular}{|c|c|c|} \hline
           A & \textcolor{red}{Y} \\ \hline
@@ -306,7 +311,7 @@
         \end{tabular}
       \end{center}
     \end{minipage}
-    \begin{minipage}{0.2\hsize}
+    \begin{minipage}{0.3\hsize}
       \begin{center}
         \begin{tabular}{|c|c|c|} \hline
           A & \textcolor{red}{Z} \\ \hline
@@ -328,6 +333,10 @@
     \item $N=M$ / $W \geq S$ か否かを判別するだけ
     \item 条件演算子 \verb|cond ? a : b| を使うと短く書ける
   \end{itemize}
+\end{frame}
+
+\begin{frame}[c]
+  \center{\huge 100点問題}
 \end{frame}
 
 \begin{frame}[containsverbatim]
@@ -374,7 +383,7 @@
 
 \begin{frame}
   \frametitle{Number of Multiples}
-  \begin{figure}
+  \begin{figure}[b]
     \begin{tabular}{*{13}{|c}|} \hline
       1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & $\cdots$ \\ \hline
     \end{tabular}
@@ -397,6 +406,10 @@
       \item 時間計算量は $O(\frac{1}{d})$
     \end{itemize}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[c]
+  \center{\huge 200点問題}
 \end{frame}
 
 \begin{frame}
@@ -455,7 +468,7 @@
 
 \begin{frame}
   \frametitle{Product Max}
-  \begin{table}
+  \begin{table}[t]
     \caption{$a,b$の範囲に対する$\max(xy)$}
     $$\begin{array}{|c||c|c|c|} \hline
       & 0 \leq c \leq d & c \leq 0 \leq d & c \leq d \leq 0 \\ \hline\hline
@@ -494,12 +507,13 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[containsverbatim]
   \frametitle{Takahashikun, The Strider}
   \begin{itemize}
     \item 高橋くんは円周上を移動するから、$KX$ が360の倍数となるような最小の $K$ を求める
     \item $X,360$ の最小公倍数を $l$ 、最大公約数を $g$ とすると、$KX=l, lg=360X$ より $K=360/g$
     \item 最小公倍数を求める関数はたいてい用意されているし、ユークリッドの互除法で簡単に実装できる
+    \item もちろん、\verb|X*i| が360の倍数になるかを順に判定してもよい
   \end{itemize}
 \end{frame}
 
