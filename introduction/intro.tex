@@ -330,6 +330,75 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}[containsverbatim]
+  \frametitle{Accepted...?}
+  \begin{itemize}
+    \item 6回if文書く卍
+    \item for文を回す
+    \begin{itemize}
+      \item 文字列のまま判別(おすすめ)
+      \begin{itemize}
+        \item 範囲for文でもよい
+      \end{itemize}
+      \item 10進整数の各桁を判別
+    \end{itemize}
+    \item \verb|count_if| のような関数を使う
+    \begin{itemize}
+      \item イテレータとラムダ式の知識を要するので初心者にはおすすめしない
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Repeat ACL}
+  \begin{itemize}
+    \item 5回if文書く卍
+    \item $K$ 回 \verb|"ACL"| を出力する
+    \item 空文字列に $K$ 回 \verb|"ACL"| を連結した文字列を出力する
+    \begin{itemize}
+      \item Pythonでは \verb|'ACL' * K| でよい
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{CODE FESTIVAL 2015}
+  \begin{itemize}
+    \item 末尾4文字が \verb|'2014'| であることが確定しているので、末尾1文字を \verb|'5'| に書き換えれば良い
+    \begin{itemize}
+      \item C++の場合末尾1文字は \verb|S[S.length() - 1]|
+      \item 文字列をスタック的に扱って \verb|S.pop_back(); S.push_back('5');| するという方法もある
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Number of Multiples}
+  \begin{figure}
+    \begin{tabular}{*{13}{|c}|} \hline
+      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & $\cdots$ \\ \hline
+    \end{tabular}
+    \caption{自然数の列}
+  \end{figure}
+  \begin{itemize}
+    \item $L,R,d$ から計算
+    \begin{itemize}
+      \item $L$ 以上の最小の $d$ の倍数は $\lceil\frac{L}{d}\rceil \times d=\lfloor\frac{L+d-1}{d}\rfloor \times d$
+      \item $R$ 以下の最大の $d$ の倍数は $\lfloor\frac{R}{d}\rfloor \times d$
+      \item 求める数は $\lfloor\frac{R}{d}\rfloor - \lfloor\frac{L+d-1}{d}\rfloor + 1$
+      \item 時間計算量は $O(1)$
+    \end{itemize}
+    \item $L$ 以上 $R$ 以下のすべての自然数 $i$ について、$d$ の倍数か($d$ で割り切れるか)を判定
+    \begin{itemize}
+      \item 時間計算量は $O(R-L)$
+    \end{itemize}
+    \item 制約を満たすすべての $d$ の倍数 $n=di(1 \leq n \leq 100)$ について、 $L \leq n \leq R$ か判定
+    \begin{itemize}
+      \item 時間計算量は $O(\frac{1}{d})$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
 \section{本番のコンテストについて}
 \frame{\sectionpage}
 
