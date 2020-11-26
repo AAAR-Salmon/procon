@@ -399,6 +399,110 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Fourtune Cookies}
+  \begin{itemize}
+    \item $A \leq B \leq C \leq D$ を仮定する(これはソートすれば簡単に得られる)
+    \begin{itemize}
+      \item 食べるクッキーと残るクッキーの美味しさの総和が等しくなることがある \\
+      $\iff$ $A+D=B+C$ or $D=A+B+C$
+    \end{itemize}
+    \item bit全探索で食べるクッキーと食べないクッキーの全ての組み合わせを検証する
+    \begin{itemize}
+      \item 4要素なので組み合わせは $2^4=16$ 通りだけ
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{天下一プログラマーコンテスト1998}
+  \begin{itemize}
+    \item いわゆる動的計画法(DP:Dynamic Programming)を使う
+    \begin{block}{動的計画法}
+      \begin{itemize}
+        \item 帰納的な関係を利用
+        \item 部分問題の計算結果を記録
+      \end{itemize}
+    \end{block}
+    \begin{itemize}
+      \item 配列を使って $a[k-3], a[k-2], a[k-1]$ から $a[k]$ を求める
+      \item これを $k=3,\ldots,19$ でやって $a[19]$ を求める($a[20]$ ではない)
+    \end{itemize}
+    \item 再帰関数を使う
+    \begin{itemize}
+      \item $f(0)=100, f(1)=100, f(2)=200, f(n)=f(n-1)+f(n-2)+f(n-3)$ として $f(19)$ を実行
+      \item ただし適切にメモ化などを行わないと69748回の関数呼び出しが行われてよくない
+    \end{itemize}
+    \item 手計算しておいて出力
+    \item ちなみにこのような漸化式を持つ数列をトリボナッチ数列という
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Addition}
+  \begin{itemize}
+    \item 偶奇が等しいかつそのときに限り、2数の和は偶数である
+    \item 黒板に数が1つだけ残ることは以下に同値である
+    \begin{itemize}
+      \item $\sum A_i$ が偶数
+      \begin{itemize}
+        \item オーバーフローに注意
+      \end{itemize}
+      \item $A_i$ のうち、奇数が偶数個だけ存在する
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Product Max}
+  \begin{table}
+    \caption{$a,b$の範囲に対する$\max(xy)$}
+    $$\begin{array}{|c||c|c|c|} \hline
+      & 0 \leq c \leq d & c \leq 0 \leq d & c \leq d \leq 0 \\ \hline\hline
+      0 \leq a \leq b & bd & bd & ad \\ \hline
+      a \leq 0 \leq b & bd & \max(ac,bd) & ac \\ \hline
+      a \leq b \leq 0 & bc & ac & ac \\ \hline
+    \end{array}$$
+  \end{table}
+  \begin{itemize}
+    \item いずれにせよ $\max(ac,ad,bc,bd)$ をとればよい
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{高橋くんと文字列操作}
+  \begin{itemize}
+    \item 回転(rotation, circular shift)と言われる操作
+    \begin{itemize}
+      \item C++では \verb|algorithm| ヘッダ内の \verb|rotate| 関数で実現できる
+      \item Pythonでは \verb|str.rotate| 関数で実現できる
+    \end{itemize}
+    \item $|s|$ 回の操作で元の文字列に戻る
+    \item 回転の計算量が $O(|s|)$ 、文字列比較の計算量が $O(|s|)$ ならば全体の時間計算量は $O(|s|^2)$
+    \item $s+s$ の $[|s|-i, 2|s|-i)$ の範囲を取り出しても $i$ 回操作したのと同じ文字列が得られる
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Magic 2}
+  \begin{itemize}
+    \item $A < 2^b B < 2^c C (b+c \leq K)$ なる $b,c$ が存在すればよい
+    \begin{itemize}
+      \item $K$ 回のループの間に、$A<B$ となるまで \verb|B *= 2| をし、$A<B$ になったら \verb|C *= 2| する
+      \item $A<B<C$ ならば成功、そうでなければ失敗
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Takahashikun, The Strider}
+  \begin{itemize}
+    \item 高橋くんは円周上を移動するから、$KX$ が360の倍数となるような最小の $K$ を求める
+    \item $X,360$ の最小公倍数を $l$ 、最大公約数を $g$ とすると、$KX=l, lg=360X$ より $K=360/g$
+    \item 最小公倍数を求める関数はたいてい用意されているし、ユークリッドの互除法で簡単に実装できる
+  \end{itemize}
+\end{frame}
+
 \section{本番のコンテストについて}
 \frame{\sectionpage}
 
