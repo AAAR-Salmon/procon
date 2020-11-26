@@ -517,6 +517,56 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}[c]
+  \center{\huge 300点問題}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Connection and Disconnection}
+  \begin{itemize}
+    \item $K$ が最大で $10^9$ になるので、愚直にシミュレートできない
+    \item $T$ は $S$ を $K$ 回繰り返したものなので $S$ についての解を $K$ 倍する
+    \begin{itemize}
+      \item ただし $S$ の始端と終端が同じである場合は注意が必要
+      \item $S$ が全て同じ文字で構成される場合も分ける必要がある
+    \end{itemize}
+    \begin{figure}[b]
+      \caption{$S$ の始端と終端が同じである場合の $T$ の例}
+        \begin{center}\tt
+          aaa b cccc ddddd eee aaa|aaa b cccc ddddd eee aaa \\
+          aza b czcz dzdzd eze aza|zaz b czcz dzdzd eze aza
+        \end{center}
+    \end{figure}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{DNA Sequence}
+  \begin{itemize}
+    \item $T$ と相補的な $T$ を並び替えた文字列が存在する \\
+    $\iff$ $T$ に含まれる \verb|A| と \verb|T|、\verb|C| と \verb|G| の数がそれぞれ等しい
+    \item $N \leq 5000$ より $\comb{N}{2}(<2 \times 10^7)$ 通りを全探索しても間に合う
+    \begin{itemize}
+      \item ただし判定を $O(1)$ でする必要がある
+      \item $S$ の $[0, n)$ の範囲に含まれる \verb|A,T,C,G| の個数をあらかじめ $O(N)$ でカウントしておけば $[a,b)$ の範囲でも $O(1)$ で求められる
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{One Quadrillion and One Dalmatians}
+  \begin{itemize}
+    \item 一見10進数を26進数に変換する問題に見える
+    \item \verb|a| と \verb|aa| は異なる
+    \begin{itemize}
+      \item \verb|a, aa, aaa| はそれぞれ1,2,3桁の1番目なので先に名前の長さを求めれば26進数への変換に持ち込める
+    \end{itemize}
+    \item 名前が $L$ 文字である条件は
+    $$\sum_{i=0}^{L-1}26^i \leq N < \sum_{i=0}^{L}26^i$$
+    であるから、$N - \sum_{i=0}^{L-1}26^i$を26進数へ変換すればよい
+  \end{itemize}
+\end{frame}
+
 \section{本番のコンテストについて}
 \frame{\sectionpage}
 
