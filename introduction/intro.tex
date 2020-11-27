@@ -7,6 +7,7 @@
 \usepackage{amsmath, amssymb}
 \usepackage{tcolorbox, xcolor}
 \usepackage{multicol}
+\usepackage{tikz}
 
 \setbeamertemplate{navigation symbols}{}
 \usetheme{AnnArbor}
@@ -565,6 +566,74 @@
     $$\sum_{i=0}^{L-1}26^i \leq N < \sum_{i=0}^{L}26^i$$
     であるから、$N - \sum_{i=0}^{L-1}26^i$を26進数へ変換すればよい
   \end{itemize}
+\end{frame}
+
+\begin{frame}[c]
+  \center{\huge 400点問題}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Connect Cities}
+  \begin{itemize}
+    \item Union-Findを使う典型問題
+  \end{itemize}
+  \begin{block}{Union-Find(Disjoint-set Data Structure), 素集合データ構造}
+    \begin{itemize}
+      \item UnionとFindの操作が定義されているデータ型
+      \begin{itemize}
+        \item Union(Merge): 2つの集合をまとめて1つにする
+        \begin{itemize}
+          \item 同じ集合に属している場合は何もしない
+        \end{itemize}
+        \item Find: ある要素がどの集合に含まれるかを探索する
+        \begin{itemize}
+          \item 普通代表元を返す
+        \end{itemize}
+      \end{itemize}
+      \item しばしば森(閉路を持たないグラフ、木の集合)として表現される
+    \end{itemize}
+  \end{block}
+  \begin{itemize}
+    \item $\{0\},\ldots,\{N-1\}$ の $N$ 個の集合を持ったUnion-Findを生成する
+    \item 各道路についてUnionして、最終的なグループ数 $g$ を求める
+    \item $N - g$ が解
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Union-Find森}
+  \usetikzlibrary{graphs}
+  \tikzstyle{every node}=[circle, draw]
+  \tikz[baseline=0pt]
+    \node{0}
+      child{node{1}}
+      child{node{2}
+        child{node{3}}
+        child{node{4}}
+      };
+  \tikz[baseline=0pt]
+    \node{5};
+  \tikz[baseline=0pt]
+    \node{6}
+      child{node{7}
+        child{node{8}}
+      };
+  \tikz[baseline=43pt, font=\small, every node/.style={draw=none}]
+    \draw[->] (0,0) -- (2,0) node[midway, above] {merge(3,8)};
+  \tikz[baseline=0pt]
+    \node{0}
+      child{node{1}}
+      child{node{2}
+        child{node{4}}
+      }
+      child{node{3}
+        child{node{6}
+          child{node{7}}
+          child{node{8}}
+        }
+      };
+  \tikz[baseline=0pt]
+    \node{5};
 \end{frame}
 
 \section{本番のコンテストについて}
