@@ -20,6 +20,7 @@
 \setbeamercolor{block body}{fg=black, bg=red!10}
 
 \newcommand{\comb}[2]{{}_{#1}\mathrm{C}_{#2}}
+\newcommand{\perm}[2]{{}_{#1}\mathrm{P}_{#2}}
 
 \hypersetup{
   colorlinks=true,
@@ -243,7 +244,6 @@
   \frametitle{配点基準}
   \begin{table}[t]
     \caption{今回採用した配点の基準}
-    \label{points}
     \begin{tabular}{ccc}\hline
       配点 & 問題数 & 問題の要素 \\ \hline
       50 & 3 & \begin{tabular}{c}
@@ -270,7 +270,6 @@
   \frametitle{配点基準}
   \begin{table}[t]
     \caption{今回採用した配点の基準}
-    \label{points}
     \begin{tabular}{ccc}\hline
       配点 & 問題数 & 問題の要素 \\ \hline
       300 & 3 & \begin{tabular}{c}
@@ -634,6 +633,65 @@
       };
   \tikz[baseline=0pt]
     \node{5};
+\end{frame}
+
+\begin{frame}
+  \frametitle{Div Game}
+  \begin{itemize}
+    \item 素因数分解すれば簡単に解ける
+    \begin{itemize}
+      \item $N=p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{n}^{e_{n}} (i \neq j \implies p_{i} \neq p_{j})$ で表されるとき、$e_i \geq \sum_{k=1}^{a_i}k$ を満たす最大の $a_i$ についてその和を求めればよい
+    \end{itemize}
+    \item $N \leq 10^{12}$ であるから、$[2,N]$ の範囲を試し割りすることはできない
+    \begin{theorem}
+      自然数 $N \geq 2$ について、$N$ が素数でない $\iff$ $N$ は $\sqrt{N}$ 以下の素因数を持つ
+    \end{theorem}
+    \item 素因数は疎であるから、連想配列に格納するとよい
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Redistribution}
+  \begin{itemize}
+    \item 条件を満たす数列の項数 $N$ の範囲は $1 \leq N \leq S/3$
+    \begin{itemize}
+      \item \underline{項数 $N$ の数列 $(a_n)$ について}、条件は次のように言い換えられる
+      \begin{tcolorbox}
+        $a_i \geq 0, a_1+\cdots+a_N=S-3N$
+      \end{tcolorbox}
+      \item このような条件を見たす数列は $S-3N$ 個の $\circ$ と $N-1$ 本の $|$ の並びに対応し、その場合の数は $\perm{S-2N-1}{S-3N}/(N-1)!$
+      \item 順列は大きな数になるから途中であまりを取る必要がある
+      \item 割り算がとてもめんどくさい(モジュラ逆数を求めるには冪を求める必要がある)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Redistribution}
+  \begin{itemize}
+    \item DPを使うことで順列の計算を回避できる
+    \begin{itemize}
+      \item 総和が $S$ となるようなすべての項が3以上である\underline{空でもよい}数列の場合の数を $A[S]$ とおく
+      \begin{itemize}
+        \item すなわち解は $A[S]$
+        \item 空な数列()の和は0であるから $A[0]=1$
+      \end{itemize}
+      \item 総和 $i-3$ で条件(各項が3以上)を満たす数列について考える
+      \begin{itemize}
+        \item この数列の末尾に3を加えると、総和 $i$ で条件を満たす新たな数列が生成できる
+      \end{itemize}
+      \item 総和 $i-4,\ldots,0$ で条件を満たす数列の末尾に $4,\ldots,i+3$ を加えても同様に総和 $i$ で条件を満たす
+      \item 以上より $A[i]=A[i-3]+A[i-4]+\cdots+A[0],A[2]=A[1]=0,A[0]=1$
+      \begin{itemize}
+        \item 遷移が $O(S)$、各項の計算量が $O(S)$ であるから計算量は $O(S^2)$
+      \end{itemize}
+      \item $A[i-1]=A[i-4]+\cdots+A[0]$ より、$A[i]=A[i-3]+A[i-1]$ に変形できる
+      \begin{itemize}
+        \item この場合各項の計算量が $O(1)$ に抑えられ $O(S)$ で解ける
+      \end{itemize}
+      \item $10^9+7$ で割ったあまりを求めることに注意
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
 \section{本番のコンテストについて}
