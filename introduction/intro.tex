@@ -551,7 +551,11 @@
     \item $N \leq 5000$ より $\comb{N}{2}(<2 \times 10^7)$ 通りを全探索しても間に合う
     \begin{itemize}
       \item ただし判定を $O(1)$ でする必要がある
-      \item $S$ の $[0, n)$ の範囲に含まれる \verb|A,T,C,G| の個数をあらかじめ $O(N)$ でカウントしておけば $[a,b)$ の範囲でも $O(1)$ で求められる
+      \item $S$ の $[0,n)$ の範囲に含まれる \verb|A,T,C,G| の個数をあらかじめ $O(N)$ でカウントしておけば $[a,b)$ の範囲でも $O(1)$ で求められる
+    \end{itemize}
+    \item 余談：Pythonは配列の処理がめちゃくちゃ遅いのでPyPyを使わないと通りませんでした
+    \begin{itemize}
+      \item NumPyなら通るかも
     \end{itemize}
   \end{itemize}
 \end{frame}
