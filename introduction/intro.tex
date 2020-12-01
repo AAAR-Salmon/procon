@@ -19,6 +19,26 @@
 \setbeamercolor{block title}{fg=white, bg=darkred}
 \setbeamercolor{block body}{fg=black, bg=red!10}
 
+\tcbuselibrary{skins}
+\newtcolorbox{term}[1]{enhanced,
+  title={#1},
+  fonttitle=\gtfamily\small,
+  frame style={left color=orange, right color=red},
+  colback=orange!10,
+  coltitle=white,
+  top=0mm, bottom=0mm,
+  before upper={\setbeamercolor{structure}{fg=orange}}
+  }
+\newtcolorbox{mytheorem}[1][定理]{enhanced,
+  title={#1},
+  fonttitle=\gtfamily\small,
+  frame style={left color=pink, right color=red},
+  colback=red!10,
+  coltitle=white,
+  top=0mm, bottom=0mm,
+  before upper={\setbeamercolor{structure}{fg=yellow}}
+  }
+
 \newcommand{\comb}[2]{{}_{#1}\mathrm{C}_{#2}}
 \newcommand{\perm}[2]{{}_{#1}\mathrm{P}_{#2}}
 
@@ -321,6 +341,7 @@
       \end{center}
     \end{minipage}
   \end{table}
+  箱 $A,B,C$ の中身 $X,Y,Z$ について、$A$ と $B$、$A$ と $C$ を順に入れ替えたときの中身を求めよ
   \begin{itemize}
     \item \verb|swap| 関数を使ってシミュレーションする
     \item 順番を決め打ちして出力する
@@ -329,8 +350,8 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{AC or WA / Sheep and Wolves}
+  それぞれ $N=M$ か、$W \geq S$ か判定せよ
   \begin{itemize}
-    \item $N=M$ / $W \geq S$ か否かを判別するだけ
     \item 条件演算子 \verb|cond ? a : b| を使うと短く書ける
   \end{itemize}
 \end{frame}
@@ -341,6 +362,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{Accepted...?}
+  長さ6の文字列 $S$ に \verb|'1'| はいくつ含まれるか
   \begin{itemize}
     \item 6回if文書く卍
     \item for文を回す
@@ -360,6 +382,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{Repeat ACL}
+  文字列 \verb|ACL| を $K$ 回繰り返した文字列を出力せよ
   \begin{itemize}
     \item 5回if文書く卍
     \item $K$ 回 \verb|"ACL"| を出力する
@@ -372,6 +395,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{CODE FESTIVAL 2015}
+  文字列の末尾の \verb|2014| を \verb|2015| に置き換えよ
   \begin{itemize}
     \item 末尾4文字が \verb|'2014'| であることが確定しているので、末尾1文字を \verb|'5'| に書き換えれば良い
     \begin{itemize}
@@ -389,22 +413,16 @@
     \end{tabular}
     \caption{自然数の列}
   \end{figure}
+  $[L,R]$ の範囲にいくつ $d$ の倍数があるか
   \begin{itemize}
-    \item $L,R,d$ から計算
+    \item $L,R,d$ から計算(時間計算量 $O(1)$)
     \begin{itemize}
-      \item $L$ 以上の最小の $d$ の倍数は $\lceil\frac{L}{d}\rceil \times d=\lfloor\frac{L+d-1}{d}\rfloor \times d$
-      \item $R$ 以下の最大の $d$ の倍数は $\lfloor\frac{R}{d}\rfloor \times d$
-      \item 求める数は $\lfloor\frac{R}{d}\rfloor - \lfloor\frac{L+d-1}{d}\rfloor + 1$
-      \item 時間計算量は $O(1)$
+      \item $L$ 以上の最小の $d$ の倍数は $\lceil L/d \rceil \times d=\lfloor (L+d-1)/d \rfloor \times d$
+      \item $R$ 以下の最大の $d$ の倍数は $\lfloor R/d \rfloor \times d$
+      \item 求める数は $\lfloor R/d \rfloor - \lfloor (L+d-1)/d \rfloor + 1$
     \end{itemize}
-    \item $L$ 以上 $R$ 以下のすべての自然数 $i$ について、$d$ の倍数か($d$ で割り切れるか)を判定
-    \begin{itemize}
-      \item 時間計算量は $O(R-L)$
-    \end{itemize}
-    \item 制約を満たすすべての $d$ の倍数 $n=di(1 \leq n \leq 100)$ について、 $L \leq n \leq R$ か判定
-    \begin{itemize}
-      \item 時間計算量は $O(\frac{1}{d})$
-    \end{itemize}
+    \item $i(L \leq i \leq R)$ について、$d$ の倍数か判定($O(R-L)$)
+    \item $d$ の倍数 $n=di(1 \leq n \leq 100)$ について、 $L \leq n \leq R$ か判定($O(\frac{1}{d})$)
   \end{itemize}
 \end{frame}
 
@@ -414,8 +432,9 @@
 
 \begin{frame}
   \frametitle{Fourtune Cookies}
+  $A,B,C,D$ を2つグループに分けて、それぞれの総和が等しくなることがあるか
   \begin{itemize}
-    \item $A \leq B \leq C \leq D$ を仮定する(これはソートすれば簡単に得られる)
+    \item $A \leq B \leq C \leq D$ としても一般性を失わない(これはソートすれば簡単に得られる)
     \begin{itemize}
       \item 食べるクッキーと残るクッキーの美味しさの総和が等しくなることがある \\
       $\iff$ $A+D=B+C$ or $D=A+B+C$
@@ -429,30 +448,30 @@
 
 \begin{frame}
   \frametitle{天下一プログラマーコンテスト1998}
+  $a_0=100,a_1=100,a_2=200,a_{n}=a_{n-1}+a_{n-2}+a_{n-3}$ が与えられるので $a_{19}$ を計算せよ
   \begin{itemize}
     \item いわゆる動的計画法(DP:Dynamic Programming)を使う
-    \begin{block}{動的計画法}
+    \begin{term}{動的計画法}
       \begin{itemize}
         \item 帰納的な関係を利用
         \item 部分問題の計算結果を記録
       \end{itemize}
-    \end{block}
+    \end{term}
     \begin{itemize}
-      \item 配列を使って $a[k-3], a[k-2], a[k-1]$ から $a[k]$ を求める
-      \item これを $k=3,\ldots,19$ でやって $a[19]$ を求める($a[20]$ ではない)
+      \item 配列を使って $a[i]=a[i-3]+a[i-2]+a[i-1]$ を $i=3,\ldots,19$ でやって $a[19]$ を求める
     \end{itemize}
     \item 再帰関数を使う
     \begin{itemize}
       \item $f(0)=100, f(1)=100, f(2)=200, f(n)=f(n-1)+f(n-2)+f(n-3)$ として $f(19)$ を実行
       \item ただし適切にメモ化などを行わないと69748回の関数呼び出しが行われてよくない
     \end{itemize}
-    \item 手計算しておいて出力
-    \item ちなみにこのような漸化式を持つ数列をトリボナッチ数列という
+    \item 手計算しておいて出力卍
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Addition}
+  偶奇が等しい2数を足し合わせていき、最後に1つだけ残るか
   \begin{itemize}
     \item 偶奇が等しいかつそのときに限り、2数の和は偶数である
     \item 黒板に数が1つだけ残ることは以下に同値である
@@ -468,6 +487,7 @@
 
 \begin{frame}
   \frametitle{Product Max}
+  $a \leq x \leq b, c \leq y \leq d$ のときの $xy$ の 最大値を求めよ
   \begin{table}[t]
     \caption{$a,b$の範囲に対する$\max(xy)$}
     $$\begin{array}{|c||c|c|c|} \hline
@@ -484,11 +504,17 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{高橋くんと文字列操作}
+  回転を繰り返して所定の文字列が得られるか
   \begin{itemize}
-    \item 回転(rotation, circular shift)と言われる操作
+    \item 回転、循環シフト(rotation, circular shift)と言われる操作
+    \begin{term}{回転、循環シフト}
+      \begin{itemize}
+        \item ビット列、配列またはキューの先頭または末尾の要素を、末尾または先頭へ移動する操作
+      \end{itemize}
+    \end{term}
     \begin{itemize}
       \item C++では \verb|algorithm| ヘッダ内の \verb|rotate| 関数で実現できる
-      \item Pythonでは \verb|str.rotate| 関数で実現できる
+      \item Pythonでは \verb|str.rotate| メソッドで実現できる
     \end{itemize}
     \item $|s|$ 回の操作で元の文字列に戻る
     \item 回転の計算量が $O(|s|)$ 、文字列比較の計算量が $O(|s|)$ ならば全体の時間計算量は $O(|s|^2)$
@@ -498,6 +524,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{Magic 2}
+  $A,B,C$ のうちいずれかを2倍する操作を $K$ 回まで繰り返し、$A<B<C$ にすることができるか
   \begin{itemize}
     \item $A < 2^b B < 2^c C (b+c \leq K)$ なる $b,c$ が存在すればよい
     \begin{itemize}
@@ -509,6 +536,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{Takahashikun, The Strider}
+  1m進みその場で $X$ 度回転することを繰り返したとき、何回目で元の位置に戻るかを求めよ
   \begin{itemize}
     \item 高橋くんは円周上を移動するから、$KX$ が360の倍数となるような最小の $K$ を求める
     \item $X,360$ の最小公倍数を $l$ 、最大公約数を $g$ とすると、$KX=l, lg=360X$ より $K=360/g$
@@ -523,6 +551,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{Connection and Disconnection}
+  $S$ を $K$ 回繰り返した文字列について、最小で何文字置き換えればどの隣り合う2文字も相異なるようにできるか
   \begin{itemize}
     \item $K$ が最大で $10^9$ になるので、愚直にシミュレートできない
     \item $T$ は $S$ を $K$ 回繰り返したものなので $S$ についての解を $K$ 倍する
@@ -545,9 +574,8 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{DNA Sequence}
+  \verb|A,T,C,G| からなる文字列 $S$ の連続する空でない部分文字列 $T$ について、\verb|A| と \verb|T|、\verb|C| と \verb|G|の数が等しいものの数を求めよ
   \begin{itemize}
-    \item $T$ と相補的な $T$ を並び替えた文字列が存在する \\
-    $\iff$ $T$ に含まれる \verb|A| と \verb|T|、\verb|C| と \verb|G| の数がそれぞれ等しい
     \item $N \leq 5000$ より $\comb{N}{2}(<2 \times 10^7)$ 通りを全探索しても間に合う
     \begin{itemize}
       \item ただし判定を $O(1)$ でする必要がある
@@ -562,6 +590,7 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{One Quadrillion and One Dalmatians}
+  名前が順に \verb|a,b,...,z,aa,ab,...,az,...,za,...,zz,aaa,...| となるとき、$N$ 番目の名前を求めよ
   \begin{itemize}
     \item 一見10進数を26進数に変換する問題に見える
     \item \verb|a| と \verb|aa| は異なる
@@ -580,29 +609,19 @@
 
 \begin{frame}
   \frametitle{Connect Cities}
+  すべての都市を相互に移動できるようにするには最小で何本の道路を新しく作ればよいか
   \begin{itemize}
     \item Union-Findを使う典型問題
-  \end{itemize}
-  \begin{block}{Union-Find(Disjoint-set Data Structure), 素集合データ構造}
-    \begin{itemize}
-      \item UnionとFindの操作が定義されているデータ型
+    \begin{term}{Union-Find(Disjoint-set Data Structure)、素集合データ構造}
       \begin{itemize}
+        \item UnionとFindの操作が定義されている集合族データ型
         \item Union(Merge): 2つの集合をまとめて1つにする
-        \begin{itemize}
-          \item 同じ集合に属している場合は何もしない
-        \end{itemize}
-        \item Find: ある要素がどの集合に含まれるかを探索する
-        \begin{itemize}
-          \item 普通代表元を返す
-        \end{itemize}
+        \item Find: ある要素がどの集合に含まれるかを探索し、代表元を返す
+        \item しばしば森(閉路を持たないグラフ、木の集合)として表現される
       \end{itemize}
-      \item しばしば森(閉路を持たないグラフ、木の集合)として表現される
-    \end{itemize}
-  \end{block}
-  \begin{itemize}
+    \end{term}
     \item $\{0\},\ldots,\{N-1\}$ の $N$ 個の集合を持ったUnion-Findを生成する
-    \item 各道路についてUnionして、最終的なグループ数 $g$ を求める
-    \item $N - g$ が解
+    \item 各道路についてUnionして、最終的なグループ数 $g$ を求める。解は $N-g$
   \end{itemize}
 \end{frame}
 
@@ -644,21 +663,26 @@
 
 \begin{frame}
   \frametitle{Div Game}
+  整数 $N$ は相異なる素数の冪で何回割り切ることができるか
   \begin{itemize}
     \item 素因数分解すれば簡単に解ける
     \begin{itemize}
       \item $N=p_{1}^{e_{1}} p_{2}^{e_{2}} \cdots p_{n}^{e_{n}} (i \neq j \implies p_{i} \neq p_{j})$ で表されるとき、$e_i \geq \sum_{k=1}^{a_i}k$ を満たす最大の $a_i$ についてその和を求めればよい
     \end{itemize}
     \item $N \leq 10^{12}$ であるから、$[2,N]$ の範囲を試し割りすることはできない
-    \begin{theorem}
+    \begin{mytheorem}
       自然数 $N \geq 2$ について、$N$ が素数でない $\iff$ $N$ は $\sqrt{N}$ 以下の素因数を持つ
-    \end{theorem}
+    \end{mytheorem}
     \item 素因数は疎であるから、連想配列に格納するとよい
+    \begin{itemize}
+      \item $p_i$ は再利用しないので $e_i$ のみ配列に格納しておいても十分
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Redistribution}
+  総和が $S$ で全ての項が3以上である数列はいくつ存在するか。$10^9+7$で割ったあまりを求めよ
   \begin{itemize}
     \item 条件を満たす数列の項数 $N$ の範囲は $1 \leq N \leq S/3$
     \begin{itemize}
@@ -696,8 +720,8 @@
       \begin{itemize}
         \item この場合各項の計算量が $O(1)$ に抑えられ $O(S)$ で解ける
       \end{itemize}
-      \item $10^9+7$ で割ったあまりを求めることに注意
     \end{itemize}
+    \item $10^9+7$ で割ったあまりを求めることに注意
   \end{itemize}
 \end{frame}
 
