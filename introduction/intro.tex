@@ -28,7 +28,7 @@
   coltitle=white,
   top=0mm, bottom=0mm,
   before upper={\setbeamercolor{structure}{fg=orange}}
-  }
+}
 \newtcolorbox{mytheorem}[1][定理]{enhanced,
   title={#1},
   fonttitle=\gtfamily\small,
@@ -37,7 +37,21 @@
   coltitle=white,
   top=0mm, bottom=0mm,
   before upper={\setbeamercolor{structure}{fg=yellow}}
+}
+\tcbuselibrary{theorems}
+\tcbset{
+  underline/.style={
+    enhanced,
+    frame hidden,
+    interior hidden,
+    size=minimal,
+    overlay={
+      \draw[
+        draw=#1, line width=1pt
+      ](frame.south west) -- (frame.south east);
+    }
   }
+}
 
 \newcommand{\comb}[2]{{}_{#1}\mathrm{C}_{#2}}
 \newcommand{\perm}[2]{{}_{#1}\mathrm{P}_{#2}}
@@ -718,11 +732,16 @@
         \item この数列の末尾に3を加えると、総和 $i$ で条件を満たす新たな数列が生成できる
       \end{itemize}
       \item 総和 $i-4,\ldots,0$ で条件を満たす数列の末尾に $4,\ldots,i+3$ を加えても同様に総和 $i$ で条件を満たす
-      \item 以上より $A[i]=A[i-3]+A[i-4]+\cdots+A[0],A[2]=A[1]=0,A[0]=1$
+      \item 以上より
+      $A[i]=A[i-3]+\tcboxmath[underline=red]{
+        A[i-4]+\cdots+A[0]
+      },A[2]=A[1]=0,A[0]=1$
       \begin{itemize}
         \item 遷移が $O(S)$、各項の計算量が $O(S)$ であるから計算量は $O(S^2)$
       \end{itemize}
-      \item $A[i-1]=A[i-4]+\cdots+A[0]$ より、$A[i]=A[i-3]+A[i-1]$ に変形できる
+      \item $A[i-1]=\tcboxmath[underline=red]{
+        A[i-4]+\cdots+A[0]
+      }$ より、$A[i]=A[i-3]+A[i-1]$ に変形できる
       \begin{itemize}
         \item この場合各項の計算量が $O(1)$ に抑えられ $O(S)$ で解ける
       \end{itemize}
