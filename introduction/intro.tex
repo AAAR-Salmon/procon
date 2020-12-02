@@ -436,7 +436,7 @@
       \item 求める数は $\lfloor R/d \rfloor - \lfloor (L+d-1)/d \rfloor + 1$
     \end{itemize}
     \item $i(L \leq i \leq R)$ について、$d$ の倍数か判定($O(R-L)$)
-    \item $d$ の倍数 $n=di(1 \leq n \leq 100)$ について、 $L \leq n \leq R$ か判定($O(\frac{1}{d})$)
+    \item $d$ の倍数 $n=di(1 \leq n \leq 100)$ について、 $L \leq n \leq R$ か判定($O(\max_{\text{constraints}}(R-L)/d)$)
   \end{itemize}
 \end{frame}
 
