@@ -63,7 +63,7 @@
 \title[競プロ体験会]{競技プログラミングを始めよう}
 \author{終に鮭}
 \institute[OUCRC]{電子計算機研究会}
-\date[12/2]{December 2, 2020}
+\date[Dec 2 (Update:Jan 15)]{December 2, 2020 (Jan 15, 2021 更新)}
 
 \begin{document}
 \frame{\titlepage}
@@ -554,7 +554,7 @@
   \begin{itemize}
     \item 高橋くんは円周上を移動するから、$KX$ が360の倍数となるような最小の $K$ を求める
     \item $X,360$ の最小公倍数を $l$ 、最大公約数を $g$ とすると、$KX=l, lg=360X$ より $K=360/g$
-    \item 最小公倍数を求める関数はたいてい用意されているし、ユークリッドの互除法で簡単に実装できる
+    \item 最大公約数を求める関数はたいてい用意されているし、ユークリッドの互除法で簡単に実装できる
     \item もちろん、\verb|X*i| が360の倍数になるかを順に判定してもよい
   \end{itemize}
 \end{frame}
@@ -631,7 +631,7 @@
         \item UnionとFindの操作が定義されている集合族データ型
         \item Union(Merge): 2つの集合をまとめて1つにする
         \item Find: ある要素がどの集合に含まれるかを探索し、代表元を返す
-        \item しばしば森(閉路を持たないグラフ、木の集合)として表現される
+        \item しばしば森(閉路を持たないグラフ、各連結成分が木となるグラフ)として表現される
       \end{itemize}
     \end{term}
     \item $\{0\},\ldots,\{N-1\}$ の $N$ 個の集合を持ったUnion-Findを生成する

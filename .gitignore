@@ -1,6 +1,6 @@
 *
 !.gitignore
-!/LICENSE
+!/LICENSE.txt
 
 !*/
 !*.pdf
